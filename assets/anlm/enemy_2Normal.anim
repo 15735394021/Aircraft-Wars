@@ -1,12 +1,12 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "heronorme",
+  "_name": "enemy_2Normal",
   "_objFlags": 0,
   "_native": "",
   "_duration": 1,
-  "sample": 2,
-  "speed": 3,
-  "wrapMode": 2,
+  "sample": 1,
+  "speed": 1,
+  "wrapMode": 1,
   "curveData": {
     "comps": {
       "cc.Sprite": {
@@ -14,13 +14,7 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "107870a1-d7b8-4f6a-9584-46414ebe33ad"
-            }
-          },
-          {
-            "frame": 0.5,
-            "value": {
-              "__uuid__": "06a0ee5e-bb08-4ef6-8083-3e76b5a41a7c"
+              "__uuid__": "b80b114b-569c-4e0d-9ae0-9a100c5631fb"
             }
           }
         ]

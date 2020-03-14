@@ -13,22 +13,25 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "bullet",
+    "_name": "bulled",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
     "_active": true,
-    "_level": 2,
+    "_level": 1,
     "_components": [
       {
         "__id__": 2
       },
       {
         "__id__": 3
+      },
+      {
+        "__id__": 4
       }
     ],
     "_prefab": {
-      "__id__": 4
+      "__id__": 5
     },
     "_opacity": 255,
     "_color": {
@@ -51,7 +54,7 @@
     "_position": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -247.816,
+      "y": 0,
       "z": 0
     },
     "_scale": {
@@ -69,7 +72,7 @@
     "_skewX": 0,
     "_skewY": 0,
     "_is3DNode": false,
-    "groupIndex": 0,
+    "groupIndex": 1,
     "_rotationX": 0,
     "_rotationY": 0,
     "_id": ""
@@ -90,7 +93,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "1a15879a-9af1-42a5-9e9f-a27211da8de2"
+      "__uuid__": "6bdc2e1f-749c-46ac-b96a-2eb13b307de0"
     },
     "_type": 0,
     "_sizeMode": 2,
@@ -104,12 +107,12 @@
     "_fillRange": 0,
     "_isTrimmedMode": true,
     "_atlas": {
-      "__uuid__": "fa7858df-0c7c-40ad-bf62-cfe8cbff09c7"
+      "__uuid__": "13bfb931-6f8d-4149-bd15-97b308881300"
     },
     "_id": ""
   },
   {
-    "__type__": "72894qBX8hLz5U+Q1iNIHQg",
+    "__type__": "52c64aHI95GKIsGQH1ehm5f",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -119,14 +122,35 @@
     "_id": ""
   },
   {
+    "__type__": "cc.BoxCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "tag": 11,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 9,
+      "height": 21
+    },
+    "_id": ""
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "da6f449e-a2f5-4dd2-a0b2-5f32f73bfaa0"
     },
-    "fileId": "99j5LuRnND/o1oWkNL7J59",
+    "fileId": "b3h8LssOFFn7d25Ez6seVN",
     "sync": false
   }
 ]

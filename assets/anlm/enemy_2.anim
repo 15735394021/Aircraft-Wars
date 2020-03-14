@@ -1,0 +1,49 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "enemy_2",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.8,
+  "sample": 5,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "75104b4f-192c-4fc6-9df1-cd13cbb89457"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "c8103d18-8428-4b13-82d3-8ee7643c179d"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "d98eea4c-54e2-43db-9358-3c107ab33632"
+            }
+          },
+          {
+            "frame": 0.6,
+            "value": {
+              "__uuid__": "dc0c716e-970d-46c8-b2fb-8fa6d19fc8a2"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": [
+    {
+      "frame": 0.6,
+      "func": "over_2",
+      "params": []
+    }
+  ]
+}

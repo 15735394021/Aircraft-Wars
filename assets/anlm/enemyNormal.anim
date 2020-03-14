@@ -1,0 +1,25 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "enemyNormal",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.26666666666666666,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "64a24703-116f-4a10-9bcc-fdd6f25a2c4d"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

@@ -1,0 +1,49 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "heroDid",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.8,
+  "sample": 5,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "6f00d193-466e-428b-a93d-85bc9fd31609"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "1332e5ee-d383-4a56-b8ba-47ec18b6eb96"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "aad06a49-92ca-40b3-9681-377fb77fb25e"
+            }
+          },
+          {
+            "frame": 0.6,
+            "value": {
+              "__uuid__": "fc09bcc5-66a3-498c-b2d6-31d3f96ed28a"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": [
+    {
+      "frame": 0.8,
+      "func": "game_over",
+      "params": []
+    }
+  ]
+}
