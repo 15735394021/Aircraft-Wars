@@ -1,0 +1,31 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "heronorme",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1,
+  "sample": 2,
+  "speed": 3,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "107870a1-d7b8-4f6a-9584-46414ebe33ad"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "06a0ee5e-bb08-4ef6-8083-3e76b5a41a7c"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
