@@ -26,11 +26,13 @@ cc.Class({
 
     die(){
         var anim = this.getComponent(cc.Animation);//拿到这个节点上的动画    getConponent方法
+        game.playSound(2);
         anim.play("heroDid");
         anim.game_over = function () {
             game.playType = 3;
             this.isDid = true;
             this.node.active = false;
+            game.game_over();
         }.bind(this)
     },
 

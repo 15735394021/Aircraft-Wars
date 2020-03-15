@@ -11,10 +11,34 @@ cc.Class({
         pre_bulled: cc.Prefab,   //预制体
         pre_enemy:cc.Prefab,
         pre_enemy_2:cc.Prefab,
+        game_overView:cc.Node,
+        score:cc.Label,
+        bestScore:cc.Label,
+        bgMusic:{
+            default:null,
+            type:cc.AudioClip,
+        },    //音频资源
+        enemyMusic:{
+            default:null,
+            type:cc.AudioClip,
+        },
+        heroMusic:{
+            default:null,
+            type:cc.AudioClip,
+        }
+    },
+
+    playSound(who){
+        if(who == 1){
+            cc.audioEngine.play(this.enemyMusic,false,1);
+        }else if(who == 2){
+            cc.audioEngine.play(this.heroMusic,false,1);
+        }
     },
 
     onLoad() {
         cc.director.getCollisionManager().enabled = true;   //开启碰撞检测
+        cc.audioEngine.play(this.bgMusic,true,1);   //音频资源，是否循环，音量
 
         window.game = this;     //声明一个全局变量，在整个项目中都可以使用，跨js
         this.randomNum = [30,60,90];
@@ -23,12 +47,14 @@ cc.Class({
         this.game_play.active = false;
         this.isBgMove = false;
         this.hero.active = false;
+        this.game_overView.active = false;
         this.bg_1.y = 0;
         this.bg_2.y = this.bg_1.y + this.bg_1.height;
         this.setTouch();
         this.pause_view.zIndex = 2;   //设置层级的优先级，越高则能显示，低的会被覆盖
         this.bulledTime = 0;
         this.enemyTime = 0;
+        this.scoreNum = 0;
         // this.schedule((function () {     //计时器
         //     this.createEnemy(2);
         // }),2)
@@ -37,25 +63,65 @@ cc.Class({
         this.enemy_2Pool = new cc.NodePool();    //敌机2的对象池
 
         this.playType = 0;   //0:ready   1:playing  2:pause   3:over
+        // if(this.playType == 1){
+        //     this.palyTime++;
+        // }
+        this.nanyi = 120;
+        this.bestScoreNum = cc.sys.localStorage.getItem("bestScoreNum");
+        if(this.bestScoreNum == null){
+            this.bestScoreNum = 0;
+        }
+        this.addScore(0);
     },
 
     start() {
 
     },
 
+    addScore(score){
+        this.scoreNum = this.scoreNum + score;
+        this.score.string = this.scoreNum;
+        if(this.bestScoreNum < this.scoreNum){
+            this.bestScoreNum = this.scoreNum;
+            this.bestScore.string = this.bestScoreNum;
+            cc.sys.localStorage.setItem("bestScoreNum",this.bestScoreNum);
+        }else{
+            this.bestScore.string = this.bestScoreNum;
+        }
+    },
+
+    game_over(){
+        this.game_overView.zIndex = 3;
+        this.game_overView.active = true;
+        this.pause_view.active = false;
+    },
+
     setTouch() {
         this.node.on('touchstart', function (event) {
-            this.title.active = false;    //将节点显示与隐藏    active
-            this.isBgMove = true;
-            this.game_play.active = true;
-            this.hero.active = true;
-            this.playType = 1;
-            this.hero.active = true;
+            if(this.playType == 0){
+                this.title.active = false;    //将节点显示与隐藏    active
+                this.isBgMove = true;
+                this.game_play.active = true;
+                this.hero.active = true;
+                this.playType = 1;
+                this.hero.active = true;
+            }
         }, this);
         this.node.on('touchmove', function (event) {
             var hero_pos = this.hero.getPosition();    //获取节点的位置坐标，相对于父节点的坐标
             var pos_move = event.getDelta();    //获取触摸移动的当前位置
-            this.hero.setPosition(cc.v2(hero_pos.x + pos_move.x, hero_pos.y + pos_move.y));   //设置节点位置
+            var pp = cc.v2(hero_pos.x + pos_move.x, hero_pos.y + pos_move.y);
+            if(pp.x > 290){
+                pp.x = 290;
+            }else if(pp.x < -290){
+                pp.x = -290;
+            }
+            if(pp.y > 533){
+                pp.y = 533;
+            }else if(pp.y < -533){
+                pp.y = -533;
+            }
+            this.hero.setPosition(pp);   //设置节点位置
         }, this);
         this.node.on('touchend', function (event) {
             // var bulled = cc.instantiate(this.pre_bulled);    //拿到预制体资源   //浪费资源
@@ -81,10 +147,13 @@ cc.Class({
                 break;
             case 'restart':
                 this.pause_view.active = false;
+                this.game_overView.active = false;
                 this.isBgMove = true;
                 this.playType = 1;
                 this.removeBulled() ;
                 this.removeAllEnemy();
+                this.scoreNum = 0;
+                this.addScore(0);
                 this.hero.setPosition(cc.v2(0,-350));//飞机的初始化位置
                 var js = this.hero.getComponent("hero");
                 if(js){
@@ -94,6 +163,7 @@ cc.Class({
             case 'backIndex':
                 this.title.active = true;
                 this.pause_view.active = false;
+                this.game_overView.active = false;
                 this.game_play.active = false;
                 this.playType = 0;
                 this.removeBulled();
@@ -108,6 +178,9 @@ cc.Class({
     },
 
     setBg() {
+        if(this.playType != 1){
+            return;
+        }
         this.bg_1.y = this.bg_1.y - 10;
         this.bg_2.y = this.bg_2.y - 10;
         if (this.bg_1.y <= -this.bg_1.height) {
@@ -164,7 +237,7 @@ cc.Class({
         if(js){
             js.init();
         }
-        var pos = cc.v2(-320 + Math.random() * 640,666);
+        var pos = cc.v2(-300 + Math.random() * 600,666);
         enemy.setPosition(pos);
     },
     //移除子弹
@@ -212,8 +285,15 @@ cc.Class({
                 this.createBulled();
             }
         }
+        if(this.playType == 1){
+            this.playTime ++ ;
+        }
         this.enemyTime++;
-        if(this.enemyTime == 120){
+        if(this.palyTime >= 1800){
+            this.playTime = 0;
+            this.nanyi-=5;
+        }
+        if(this.enemyTime == this.nanyi){
             this.enemyTime = 0;
             if (this.playType == 1) {
                 var num = Math.random() * 100;

@@ -34,9 +34,11 @@ cc.Class({
     die(){
         this.isDie = true;
         var anim = this.getComponent(cc.Animation);//拿到这个节点上的动画    getConponent方法
+        game.playSound(1);
         anim.play("enemy_2");     //播放制定动画，因为一个节点上可能有多个动画，。。。。死亡动画，移动动画。。。
         anim.over_2 = function () {
             game.enemy_2Pool.put(this.node);
+            game.addScore(2);
         }
     },
 
